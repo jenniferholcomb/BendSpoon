@@ -47,31 +47,6 @@ namespace BendSpoon.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "EmployeeRestaurant",
-                columns: table => new
-                {
-                    EmployeesEmployeeId = table.Column<int>(type: "int", nullable: false),
-                    RestaurantsRestaurantId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeRestaurant", x => new { x.EmployeesEmployeeId, x.RestaurantsRestaurantId });
-                    table.ForeignKey(
-                        name: "FK_EmployeeRestaurant_Employees_EmployeesEmployeeId",
-                        column: x => x.EmployeesEmployeeId,
-                        principalTable: "Employees",
-                        principalColumn: "EmployeeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EmployeeRestaurant_Restaurants_RestaurantsRestaurantId",
-                        column: x => x.RestaurantsRestaurantId,
-                        principalTable: "Restaurants",
-                        principalColumn: "RestaurantId",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "EmployeeRestaurants",
                 columns: table => new
                 {
@@ -99,11 +74,6 @@ namespace BendSpoon.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeeRestaurant_RestaurantsRestaurantId",
-                table: "EmployeeRestaurant",
-                column: "RestaurantsRestaurantId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EmployeeRestaurants_EmployeeId",
                 table: "EmployeeRestaurants",
                 column: "EmployeeId");
@@ -116,9 +86,6 @@ namespace BendSpoon.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "EmployeeRestaurant");
-
             migrationBuilder.DropTable(
                 name: "EmployeeRestaurants");
 
