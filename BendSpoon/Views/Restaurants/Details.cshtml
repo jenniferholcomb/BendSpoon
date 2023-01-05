@@ -6,6 +6,14 @@
 
 <h3>Restaurant Details</h3>
 
-<h5>Restaurant: @Html.DisplayFor(model => model.RestName)</h5>
+<hr>
 
-<p>@Html.ActionLink("Return to Restaurant List", "Index")</P>
+<h4>@Html.DisplayFor(model => model.RestName)</h4>
+<h5>Type: @Html.DisplayFor(model => model.Type)</h5>
+
+<hr>
+
+<p>
+@Html.ActionLink("Return to Restaurant List", "Index")<br>
+@Html.ActionLink("Return to Home", "Index", "Home")
+</p>

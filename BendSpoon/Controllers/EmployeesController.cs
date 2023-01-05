@@ -21,5 +21,18 @@ namespace BendSpoon.Controllers
     {
       return View();
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Employee employee)
+    {
+      _db.Employees.Add(employee);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
