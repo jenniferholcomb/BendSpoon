@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BendSpoon.Models.Employee
+
+<h3>Employee Details</h3>
+
+<hr>
+
+<h4>Name: @Html.DisplayFor(model => model.Name)</h4>
+<h4>Start Date: @Html.DisplayFor(model => model.StartDate)</h4>
+
+<hr>
+
+<p>
+@Html.ActionLink("Return to Employee List", "Index")<br>
+@Html.ActionLink("Return to Home", "Index", "Home")
+</p>

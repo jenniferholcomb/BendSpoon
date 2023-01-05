@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System;
-//using System.Linq;
+using System.Linq;
 
 namespace BendSpoon.Controllers
 {
@@ -19,7 +19,7 @@ namespace BendSpoon.Controllers
 
     public ActionResult Index()
     {
-      return View();
+      return View(_db.Employees.OrderBy(employee => employee.Name).ToList());
     }
 
     public ActionResult Create()
@@ -33,6 +33,12 @@ namespace BendSpoon.Controllers
       _db.Employees.Add(employee);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+      Employee thisEmployee = _db.Employees.FirstOrDefault(employee => employee.EmployeeId == id);
+      return View(thisEmployee);
     }
   }
 }
