@@ -1,0 +1,11 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BendSpoon.Models.Restaurant
+
+<h3>Restaurant Details</h3>
+
+<h5>Restaurant: @Html.DisplayFor(model => model.RestName)</h5>
+
+<p>@Html.ActionLink("Return to Restaurant List", "Index")</P>

@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BendSpoon.Models.Restaurant
+
+<h3>Add new Restaurant</h3>
+
+<hr>
+
+@using (Html.BeginForm())
+{
+  @Html.Label("Restaurant Name")
+  @Html.TextBoxFor(model => model.RestName)
+
+  @Html.LabelFor(model => model.Type)
+  @Html.DropDownList("Type", new List<SelectListItem>
+  {
+    new SelectListItem{ Text="--Please Select a Type--", Value="" },
+    new SelectListItem{ Text="Brunch", Value="Brunch" },
+    new SelectListItem{ Text="Burger", Value="Burger" },
+    new SelectListItem{ Text="Sushi", Value="Sushi" },
+    new SelectListItem{ Text="Catering", Value="Catering" }
+  })
+
+  <input type="submit" value="Save" />
+}
