@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model BendSpoon.Models.Employee
+@using BendSpoon.Models
+
+<h3>Edit Employee,</h3>
+
+@using (@Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.EmployeeId)
+
+  <p>
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+  </p>
+
+  <p>Start Date:
+  @Html.EditorFor(model => model.StartDate)
+  </p>
+
+  <input type="submit" value="Save Changes" />
+  <input type="submit" value="Delete Employee" onclick="this.form.action='/Employees/Delete/@Model.EmployeeId';" />
+}
+
+<hr>
+
+<p>@Html.ActionLink("Back to Employee List", "Index")</p>

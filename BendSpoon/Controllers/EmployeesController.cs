@@ -47,5 +47,29 @@ namespace BendSpoon.Controllers
       Employee thisEmployee = _db.Employees.FirstOrDefault(employee => employee.EmployeeId == id);
       return View(thisEmployee);
     }
+
+    public ActionResult Edit(int id)
+    {
+      Employee thisEmployee = _db.Employees
+                            //.Include(student => student.JoinEntities)
+                            //.ThenInclude(join => join.Course)
+                            .FirstOrDefault(employee => employee.EmployeeId == id);
+      //ViewBag.Status = new SelectList(_db.Courses, "CourseId", "Name");
+      return View(thisEmployee);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Employee employee)
+    {
+      _db.Employees.Update(employee);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Employee thisEmployee = _db.Employees.FirstOrDefault(employee => employee.EmployeeId == id);
+      return View(thisEmployee);
+    }
   }
 }
