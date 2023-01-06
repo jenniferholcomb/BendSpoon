@@ -6,6 +6,8 @@
 
 <h2>Add a new Employee,</h2>
 
+<p>@Html.ValidationMessageFor(model => model.StartDate, "", new { @class="text-danger", @style="font-weight: 600;" })</p>
+
 @using (Html.BeginForm())
 {
   @Html.DisplayNameFor(model => model.Name)

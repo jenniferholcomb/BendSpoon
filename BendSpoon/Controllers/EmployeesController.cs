@@ -30,9 +30,16 @@ namespace BendSpoon.Controllers
     [HttpPost]
     public ActionResult Create(Employee employee)
     {
-      _db.Employees.Add(employee);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View();
+      }
+      else
+      {
+        _db.Employees.Add(employee);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
